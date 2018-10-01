@@ -51,6 +51,7 @@ public class TerminBL extends AbstractListModel<Termin>
     public void save()throws Exception{
         try {
             JFileChooser chooser = new JFileChooser();
+            chooser.setAcceptAllFileFilterUsed(false);
             chooser.addChoosableFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
             File file = null;
             int result = chooser.showSaveDialog(null);
@@ -85,6 +86,7 @@ public class TerminBL extends AbstractListModel<Termin>
         } catch (Exception e) {
             throw e;
         }
+        
     }
     
     

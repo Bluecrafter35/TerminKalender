@@ -1,3 +1,6 @@
+
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -28,13 +31,37 @@ public class TerminGUI extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu1 = new javax.swing.JMenu();
+        mItemHinzufügen = new javax.swing.JMenuItem();
+        mItemLöschen = new javax.swing.JMenuItem();
+        mItemÄndern = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
 
+        jMenu1.setText("jMenu1");
+
+        mItemHinzufügen.setText("hinzufügen");
+        mItemHinzufügen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mItemHinzufügenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mItemHinzufügen);
+
+        mItemLöschen.setText("löschen");
+        jMenu1.add(mItemLöschen);
+
+        mItemÄndern.setText("ändern");
+        jMenu1.add(mItemÄndern);
+
+        jPopupMenu1.add(jMenu1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
 
+        jList1.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jList1);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -63,6 +90,17 @@ public class TerminGUI extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
+         JFrame frame= new JFrame();
+        AppointmentDlg dialog=new AppointmentDlg(frame, true);//true-----> modal!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      dialog.setVisible(true);
+    //  Event e=null;
+       if(dialog.isOK()){
+    //      e=dialog.getBack();
+           
+       }
+    }//GEN-LAST:event_mItemHinzufügenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,6 +143,11 @@ public class TerminGUI extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JList<Termin> jList1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem mItemHinzufügen;
+    private javax.swing.JMenuItem mItemLöschen;
+    private javax.swing.JMenuItem mItemÄndern;
     // End of variables declaration//GEN-END:variables
 }

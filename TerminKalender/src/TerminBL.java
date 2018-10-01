@@ -5,7 +5,7 @@ import javax.swing.AbstractListModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and open the template in the editor. 
  */
 
 /**
@@ -31,5 +31,10 @@ public class TerminBL extends AbstractListModel<Termin>
     public void add(Termin e){
         termine.add(e);
         fireIntervalAdded(this, termine.size()-1, termine.size()-1);
+    }
+    
+    public void delete(int i){
+        termine.remove(i);
+        fireIntervalRemoved(this, 0,termine.size()-1);
     }
 }

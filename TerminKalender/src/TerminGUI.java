@@ -95,9 +95,9 @@ public class TerminGUI extends javax.swing.JFrame
          JFrame frame= new JFrame();
         AppointmentDlg dialog=new AppointmentDlg(frame, true);//true-----> modal!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       dialog.setVisible(true);
-    //  Event e=null;
+      Termin t=null;
        if(dialog.isOK()){
-    //      e=dialog.getBack();
+        t=dialog.getTermin();
            
        }
     }//GEN-LAST:event_mItemHinzufügenActionPerformed

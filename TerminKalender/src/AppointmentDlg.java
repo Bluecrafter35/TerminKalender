@@ -107,7 +107,7 @@ private boolean ok=false;
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
     try{
         LocalDateTime d=LocalDateTime.of(Integer.parseInt(tfJahr.getText()),Integer.parseInt(tfMonat.getText()),Integer.parseInt(tfTag.getText()),   Integer.parseInt(tfStunde.getText()), Integer.parseInt(tfMinute.getText()));
-        Termin t=new Termin(d, tfText.getText());
+         termin=new Termin(d, tfText.getText());
         
         
     }catch(Exception ex){

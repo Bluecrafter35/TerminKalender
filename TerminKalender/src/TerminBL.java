@@ -28,4 +28,8 @@ public class TerminBL extends AbstractListModel<Termin>
         return termine.get(i);
     }
     
+    public void add(Termin e){
+        termine.add(e);
+        fireIntervalAdded(this, termine.size()-1, termine.size()-1);
+    }
 }

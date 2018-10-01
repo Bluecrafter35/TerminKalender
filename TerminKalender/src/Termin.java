@@ -24,6 +24,27 @@ public class Termin implements Serializable
         this.datum = datum;
         this.text = text;
     }
+
+    public LocalDateTime getDatum()
+    {
+        return datum;
+    }
+
+    public void setDatum(LocalDateTime datum)
+    {
+        this.datum = datum;
+    }
+
+    public String getText()
+    {
+        return text;
+    }
+
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+    
     
     @Override
     public String toString()

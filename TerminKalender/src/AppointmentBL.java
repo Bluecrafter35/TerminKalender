@@ -52,7 +52,7 @@ public class AppointmentBL extends AbstractListModel<Appointment>
     public void save() throws Exception
     {
         try {
-            File file = choose();
+            File file = new File(".\\Termin.bin");
 
             FileOutputStream fos = new FileOutputStream(file.getAbsolutePath());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -68,7 +68,7 @@ public class AppointmentBL extends AbstractListModel<Appointment>
     {
         termine.removeAll(termine);
         try {
-            File file = choose();
+            File file = new File(".\\Termin.bin");
             
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
             ObjectInputStream ois = new ObjectInputStream(fis);
@@ -85,33 +85,6 @@ public class AppointmentBL extends AbstractListModel<Appointment>
         fireContentsChanged(this, 0, termine.size()-1);
     }
     
-    private File choose()throws Exception{
-        try {
-            JFileChooser chooser = new JFileChooser();
-            chooser.setAcceptAllFileFilterUsed(false);
-            chooser.addChoosableFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
-            
-            File file = null;
-            int result = chooser.showSaveDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                file = chooser.getSelectedFile();
-            }
-
-            FileInputStream fis = new FileInputStream(file.getAbsolutePath());
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            termine = (ArrayList<Appointment>) ois.readObject();
-            fis.close();
-
-            return file;
-
-        } catch (Exception e) {
-            throw e;
-        }
-
-    }
-    
-
-
     }
 
 

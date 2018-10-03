@@ -15,6 +15,12 @@ public class AppointmentGUI extends javax.swing.JFrame
         initComponents();
 
         list.setModel(model);
+        
+        try {
+            model.load();
+        } catch (Exception ex) {
+            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -112,7 +118,6 @@ public class AppointmentGUI extends javax.swing.JFrame
 
         try {
             model.save();
-            model.load();
         } catch (Exception ex) {
             Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
         }

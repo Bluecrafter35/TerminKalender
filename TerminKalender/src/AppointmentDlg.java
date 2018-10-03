@@ -1,6 +1,12 @@
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javafx.util.converter.LocalDateTimeStringConverter;
+
+
 public class AppointmentDlg extends javax.swing.JDialog {
 private boolean ok=false;
+   private Termin termin;
    
     public AppointmentDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -9,6 +15,10 @@ private boolean ok=false;
      public boolean isOK(){
         return ok;
     }
+     public Termin getTermin(){
+         return termin;
+     }
+    
 
   
     @SuppressWarnings("unchecked")
@@ -95,7 +105,18 @@ private boolean ok=false;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
-     ok=true;
+    try{
+        LocalDateTime d=LocalDateTime.of(Integer.parseInt(tfJahr.getText()),Integer.parseInt(tfMonat.getText()),Integer.parseInt(tfTag.getText()),   Integer.parseInt(tfStunde.getText()), Integer.parseInt(tfMinute.getText()));
+         termin=new Termin(d, tfText.getText());
+        
+        
+    }catch(Exception ex){
+        System.out.println(ex.getMessage());
+    }
+        
+        
+        
+        ok=true;
      this.dispose();
     }//GEN-LAST:event_btÜbernehmenActionPerformed
 

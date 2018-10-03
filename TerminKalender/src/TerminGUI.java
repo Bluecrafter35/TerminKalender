@@ -1,4 +1,6 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 
@@ -10,6 +12,7 @@ TerminBL model=new TerminBL();
     public TerminGUI()
     {
         initComponents();
+        
         list.setModel(model);
     }
 
@@ -58,6 +61,7 @@ TerminBL model=new TerminBL();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
 
+        list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         list.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(list);
 
@@ -106,7 +110,13 @@ TerminBL model=new TerminBL();
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
-     
+   
+    try {
+        model.save();
+        model.load();
+    } catch (Exception ex) {
+        Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
    

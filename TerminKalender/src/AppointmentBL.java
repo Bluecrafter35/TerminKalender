@@ -48,6 +48,12 @@ public class AppointmentBL extends AbstractListModel<Appointment>
         termine.remove(i);
         fireIntervalRemoved(this, i, i);
     }
+    
+    public void change(Appointment appoint, int index)
+    {
+        termine.set(index, appoint);
+        fireContentsChanged(this, 0, termine.size()-1);
+    }
 
     public void save() throws Exception
     {

@@ -129,7 +129,19 @@ public class AppointmentGUI extends javax.swing.JFrame
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
-
+        AppointmentDlg dialog = new AppointmentDlg(new JFrame(), true);
+        if(this.list.getSelectedIndices().length==1)
+        {
+            int idx = this.list.getSelectedIndex();
+            Appointment appoint = model.getElementAt(idx);
+            dialog.changeAppointment(appoint);
+            dialog.setVisible(true);
+            if(dialog.isOK())
+            {
+                appoint = dialog.getTermin();
+                model.change(appoint, idx);
+            }
+        }
         
     }//GEN-LAST:event_mItemÄndernActionPerformed
 

@@ -24,6 +24,17 @@ public class AppointmentDlg extends javax.swing.JDialog
     {
         return termin;
     }
+    
+    public void changeAppointment(Appointment appoint)
+    {
+        LocalDateTime datum = appoint.getDatum();
+        this.tfTag.setText(""+datum.getDayOfMonth());
+        this.tfMonat.setText(""+datum.getMonthValue());
+        this.tfJahr.setText(""+datum.getYear());
+        this.tfStunde.setText(""+datum.getHour());
+        this.tfMinute.setText(""+datum.getMinute());
+        this.tfText.setText(appoint.getText());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

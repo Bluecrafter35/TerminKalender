@@ -89,11 +89,11 @@ TerminBL model=new TerminBL();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
-         JFrame frame= new JFrame();
+        JFrame frame= new JFrame();
         AppointmentDlg dialog=new AppointmentDlg(frame, true);
-      dialog.setVisible(true);
-      Termin t=null;
-       if(dialog.isOK()){
+        dialog.setVisible(true);
+        Termin t=null;
+        if(dialog.isOK()){
         t=dialog.getTermin();
            model.add(t);
            System.out.println("Hinzugefügt");

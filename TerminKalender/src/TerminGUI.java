@@ -3,20 +3,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-
 public class TerminGUI extends javax.swing.JFrame
 {
-TerminBL model=new TerminBL();
 
-  
+    TerminBL model = new TerminBL();
+
     public TerminGUI()
     {
         initComponents();
-        
+
         list.setModel(model);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,26 +91,15 @@ TerminBL model=new TerminBL();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
-<<<<<<< HEAD
-        JFrame frame= new JFrame();
-        AppointmentDlg dialog=new AppointmentDlg(frame, true);//true-----> modal!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        JFrame frame = new JFrame();
+        AppointmentDlg dialog = new AppointmentDlg(frame, true);
         dialog.setVisible(true);
-    //  Event e=null;
-        if(dialog.isOK()){
-            
-           
-=======
-         JFrame frame= new JFrame();
-        AppointmentDlg dialog=new AppointmentDlg(frame, true);
-      dialog.setVisible(true);
-      Termin t=null;
-       if(dialog.isOK()){
-        t=dialog.getTermin();
-           model.add(t);
-           System.out.println("Hinzugefügt");
-           System.out.println(t.toString());
->>>>>>> 7af54f1d2163a4c310ba5fd2414c51796125ac1f
-       }
+        Termin t = null;
+        if (dialog.isOK()) {
+            t = dialog.getTermin();
+            model.add(t);
+        }
     }//GEN-LAST:event_mItemHinzufügenActionPerformed
 
     private void mItemLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLöschenActionPerformed
@@ -120,16 +107,15 @@ TerminBL model=new TerminBL();
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
-   
-    try {
-        model.save();
-        model.load();
-    } catch (Exception ex) {
-        Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
-    }
+
+        try {
+            model.save();
+            model.load();
+        } catch (Exception ex) {
+            Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
-   
     public static void main(String args[])
     {
         /* Set the Nimbus look and feel */

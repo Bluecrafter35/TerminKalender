@@ -6,6 +6,7 @@ import javafx.util.converter.LocalDateTimeStringConverter;
 
 public class Termin implements Serializable
 {
+
     private LocalDateTime datum;
     private String text;
 
@@ -34,12 +35,12 @@ public class Termin implements Serializable
     {
         this.text = text;
     }
-    
+
     @Override
     public String toString()
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy - HH.mm");
         return String.format("%s --> %s", datum.format(dtf), text);
     }
-    
+
 }

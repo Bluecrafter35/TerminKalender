@@ -16,15 +16,15 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor. 
  */
-
 /**
  *
  * @author Christoph Mautner
  */
 public class TerminBL extends AbstractListModel<Termin>
 {
+
     private ArrayList<Termin> termine = new ArrayList<>();
-    
+
     @Override
     public int getSize()
     {
@@ -36,18 +36,21 @@ public class TerminBL extends AbstractListModel<Termin>
     {
         return termine.get(i);
     }
-    
-    public void add(Termin e){
+
+    public void add(Termin e)
+    {
         termine.add(e);
-        fireIntervalAdded(this, termine.size()-1, termine.size()-1);
+        fireIntervalAdded(this, termine.size() - 1, termine.size() - 1);
     }
-    
-    public void delete(int i){
+
+    public void delete(int i)
+    {
         termine.remove(i);
-        fireIntervalRemoved(this, 0,termine.size()-1);
+        fireIntervalRemoved(this, i, i);
     }
-    
-    public void save()throws Exception{
+
+    public void save() throws Exception
+    {
         try {
             File file = choose();
 
@@ -61,7 +64,8 @@ public class TerminBL extends AbstractListModel<Termin>
         }
     }
 
-    public void load() throws Exception{
+    public void load() throws Exception
+    {
         termine.removeAll(termine);
         try {
             File file = choose();
@@ -96,6 +100,12 @@ public class TerminBL extends AbstractListModel<Termin>
         } catch (Exception e) {
             throw e;
         }
+<<<<<<< HEAD
     }
     
+=======
+
+    }
+
+>>>>>>> ac47c2a2d4ba99028d454bc5b98348b31f756e1b
 }

@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.AbstractListModel;
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -50,14 +49,7 @@ public class TerminBL extends AbstractListModel<Termin>
     
     public void save()throws Exception{
         try {
-            JFileChooser chooser = new JFileChooser();
-
-            chooser.addChoosableFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
-            File file = null;
-            int result = chooser.showSaveDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                file = chooser.getSelectedFile();
-            }
+            File file = choose();
 
             FileOutputStream fos = new FileOutputStream(file.getAbsolutePath());
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -72,13 +64,8 @@ public class TerminBL extends AbstractListModel<Termin>
     public void load() throws Exception{
         termine.removeAll(termine);
         try {
-            JFileChooser chooser = new JFileChooser();
-            chooser.addChoosableFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
-            File file = null;
-            int result = chooser.showSaveDialog(null);
-            if (result == JFileChooser.APPROVE_OPTION) {
-                file = chooser.getSelectedFile();
-            }
+            File file = choose();
+            
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
             ObjectInputStream ois = new ObjectInputStream(fis);
             termine = (ArrayList<Termin>) ois.readObject();
@@ -89,5 +76,26 @@ public class TerminBL extends AbstractListModel<Termin>
         
     }
     
+    public void sort(){
+        this.termine.sort(new Sortieren());
+        fireContentsChanged(this, 0, termine.size()-1);
+    }
+    
+    private File choose()throws Exception{
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setAcceptAllFileFilterUsed(false);
+            chooser.addChoosableFileFilter(new FileNameExtensionFilter("*.txt", "txt"));
+            
+            File file = null;
+            int result = chooser.showSaveDialog(null);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                file = chooser.getSelectedFile();
+            }
+            return file;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     
 }

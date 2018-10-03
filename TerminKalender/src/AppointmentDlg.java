@@ -7,7 +7,7 @@ public class AppointmentDlg extends javax.swing.JDialog
 {
 
     private boolean ok = false;
-    private Termin termin;
+    private Appointment termin;
 
     public AppointmentDlg(java.awt.Frame parent, boolean modal)
     {
@@ -20,7 +20,7 @@ public class AppointmentDlg extends javax.swing.JDialog
         return ok;
     }
 
-    public Termin getTermin()
+    public Appointment getTermin()
     {
         return termin;
     }
@@ -111,7 +111,7 @@ public class AppointmentDlg extends javax.swing.JDialog
     private void btÜbernehmenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btÜbernehmenActionPerformed
         try {
             LocalDateTime d = LocalDateTime.of(Integer.parseInt(tfJahr.getText()), Integer.parseInt(tfMonat.getText()), Integer.parseInt(tfTag.getText()), Integer.parseInt(tfStunde.getText()), Integer.parseInt(tfMinute.getText()));
-            termin = new Termin(d, tfText.getText());
+            termin = new Appointment(d, tfText.getText());
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

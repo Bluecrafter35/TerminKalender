@@ -21,10 +21,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Christoph Mautner
  */
-public class TerminBL extends AbstractListModel<Termin>
+public class AppointmentBL extends AbstractListModel<Appointment>
 {
 
-    private ArrayList<Termin> termine = new ArrayList<>();
+    private ArrayList<Appointment> termine = new ArrayList<>();
 
     @Override
     public int getSize()
@@ -33,12 +33,12 @@ public class TerminBL extends AbstractListModel<Termin>
     }
 
     @Override
-    public Termin getElementAt(int i)
+    public Appointment getElementAt(int i)
     {
         return termine.get(i);
     }
 
-    public void add(Termin e)
+    public void add(Appointment e)
     {
         termine.add(e);
         fireIntervalAdded(this, termine.size() - 1, termine.size() - 1);
@@ -85,7 +85,7 @@ public class TerminBL extends AbstractListModel<Termin>
             }
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
             ObjectInputStream ois = new ObjectInputStream(fis);
-            termine = (ArrayList<Termin>) ois.readObject();
+            termine = (ArrayList<Appointment>) ois.readObject();
             fis.close();
         } catch (Exception e) {
             throw e;

@@ -4,12 +4,12 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 
-public class TerminGUI extends javax.swing.JFrame
+public class AppointmentGUI extends javax.swing.JFrame
 {
 
-    TerminBL model = new TerminBL();
+    AppointmentBL model = new AppointmentBL();
 
-    public TerminGUI()
+    public AppointmentGUI()
     {
 
         initComponents();
@@ -97,7 +97,7 @@ public class TerminGUI extends javax.swing.JFrame
         JFrame frame = new JFrame();
         AppointmentDlg dialog = new AppointmentDlg(frame, true);
         dialog.setVisible(true);
-        Termin t = null;
+        Appointment t = null;
         if (dialog.isOK()) {
             t = dialog.getTermin();
             model.add(t);
@@ -114,7 +114,7 @@ public class TerminGUI extends javax.swing.JFrame
             model.save();
             model.load();
         } catch (Exception ex) {
-            Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
@@ -135,20 +135,21 @@ public class TerminGUI extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TerminGUI().setVisible(true);
+                new AppointmentGUI().setVisible(true);
             }
         });
     }
@@ -158,7 +159,7 @@ public class TerminGUI extends javax.swing.JFrame
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Termin> list;
+    private javax.swing.JList<Appointment> list;
     private javax.swing.JMenuItem mItemHinzufügen;
     private javax.swing.JMenuItem mItemLöschen;
     private javax.swing.JMenuItem mItemÄndern;

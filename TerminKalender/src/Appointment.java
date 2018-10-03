@@ -4,13 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.util.converter.LocalDateTimeStringConverter;
 
-public class Termin implements Serializable
+public class Appointment implements Serializable
 {
 
     private LocalDateTime datum;
     private String text;
 
-    public Termin(LocalDateTime datum, String text)
+    public Appointment(LocalDateTime datum, String text)
     {
         this.datum = datum;
         this.text = text;

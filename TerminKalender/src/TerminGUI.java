@@ -3,11 +3,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 
-public class TerminGUI extends javax.swing.JFrame {
+
+public class TerminGUI extends javax.swing.JFrame
+{
 
     TerminBL model = new TerminBL();
 
-    public TerminGUI() {
+    public TerminGUI()
+    {
+
         initComponents();
 
         list.setModel(model);
@@ -114,7 +118,10 @@ public class TerminGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
-    public static void main(String args[]) {
+
+    public static void main(String args[])
+    {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -2,6 +2,7 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 
 public class AppointmentGUI extends javax.swing.JFrame
@@ -125,7 +126,14 @@ public class AppointmentGUI extends javax.swing.JFrame
     }//GEN-LAST:event_mItemHinzufügenActionPerformed
 
     private void mItemLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLöschenActionPerformed
-        model.delete(list.getSelectedIndex());
+        if(this.list.getSelectedIndices().length==1)
+        {
+            model.delete(list.getSelectedIndex());
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Bitte einen Termin aus der Liste auswählen");
+        }
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
@@ -141,6 +149,10 @@ public class AppointmentGUI extends javax.swing.JFrame
                 appoint = dialog.getTermin();
                 model.change(appoint, idx);
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Bitte einen Termin aus der Liste auswählen");
         }
         
     }//GEN-LAST:event_mItemÄndernActionPerformed

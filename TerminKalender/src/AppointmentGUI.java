@@ -60,6 +60,11 @@ public class AppointmentGUI extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                loadData(evt);
+            }
+        });
 
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         list.setComponentPopupMenu(jPopupMenu1);
@@ -110,13 +115,16 @@ public class AppointmentGUI extends javax.swing.JFrame
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
 
+        
+    }//GEN-LAST:event_mItemÄndernActionPerformed
+
+    private void loadData(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_loadData
         try {
             model.save();
-            model.load();
         } catch (Exception ex) {
             Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_mItemÄndernActionPerformed
+    }//GEN-LAST:event_loadData
 
 
     public static void main(String args[])

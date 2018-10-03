@@ -45,7 +45,7 @@ public class TerminBL extends AbstractListModel<Termin>
     
     public void delete(int i){
         termine.remove(i);
-        fireIntervalRemoved(this, 0,termine.size()-1);
+        fireIntervalRemoved(this, i, i);
     }
     
     public void save()throws Exception{

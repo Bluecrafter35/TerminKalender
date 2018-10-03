@@ -1,19 +1,18 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
+public class TerminGUI extends javax.swing.JFrame {
 
-public class TerminGUI extends javax.swing.JFrame
-{
-TerminBL model=new TerminBL();
+    TerminBL model = new TerminBL();
 
-  
-    public TerminGUI()
-    {
+    public TerminGUI() {
         initComponents();
+
         list.setModel(model);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -58,6 +57,7 @@ TerminBL model=new TerminBL();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
 
+        list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         list.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(list);
 
@@ -89,16 +89,15 @@ TerminBL model=new TerminBL();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
-        JFrame frame= new JFrame();
-        AppointmentDlg dialog=new AppointmentDlg(frame, true);
+
+        JFrame frame = new JFrame();
+        AppointmentDlg dialog = new AppointmentDlg(frame, true);
         dialog.setVisible(true);
-        Termin t=null;
-        if(dialog.isOK()){
-        t=dialog.getTermin();
-           model.add(t);
-           System.out.println("Hinzugefügt");
-           System.out.println(t.toString());
-       }
+        Termin t = null;
+        if (dialog.isOK()) {
+            t = dialog.getTermin();
+            model.add(t);
+        }
     }//GEN-LAST:event_mItemHinzufügenActionPerformed
 
     private void mItemLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLöschenActionPerformed
@@ -106,12 +105,16 @@ TerminBL model=new TerminBL();
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
-     
+
+        try {
+            model.save();
+            model.load();
+        } catch (Exception ex) {
+            Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
-   
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -136,10 +139,8 @@ TerminBL model=new TerminBL();
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new TerminGUI().setVisible(true);
             }
         });

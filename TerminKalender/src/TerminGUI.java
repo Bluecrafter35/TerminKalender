@@ -93,25 +93,14 @@ TerminBL model=new TerminBL();
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
-<<<<<<< HEAD
+
         JFrame frame= new JFrame();
-        AppointmentDlg dialog=new AppointmentDlg(frame, true);//true-----> modal!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        AppointmentDlg dialog = new AppointmentDlg(frame, true);
         dialog.setVisible(true);
-    //  Event e=null;
+        Termin t=null;
         if(dialog.isOK()){
-            
-           
-=======
-         JFrame frame= new JFrame();
-        AppointmentDlg dialog=new AppointmentDlg(frame, true);
-      dialog.setVisible(true);
-      Termin t=null;
-       if(dialog.isOK()){
-        t=dialog.getTermin();
-           model.add(t);
-           System.out.println("Hinzugefügt");
-           System.out.println(t.toString());
->>>>>>> 7af54f1d2163a4c310ba5fd2414c51796125ac1f
+            t=dialog.getTermin();
+            model.add(t);
        }
     }//GEN-LAST:event_mItemHinzufügenActionPerformed
 

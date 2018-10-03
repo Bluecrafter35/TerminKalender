@@ -25,7 +25,8 @@ public class AppointmentGUI extends javax.swing.JFrame
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -39,24 +40,30 @@ public class AppointmentGUI extends javax.swing.JFrame
         jMenu1.setText("Termin");
 
         mItemHinzufügen.setText("hinzufügen");
-        mItemHinzufügen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemHinzufügen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemHinzufügenActionPerformed(evt);
             }
         });
         jMenu1.add(mItemHinzufügen);
 
         mItemLöschen.setText("löschen");
-        mItemLöschen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemLöschen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemLöschenActionPerformed(evt);
             }
         });
         jMenu1.add(mItemLöschen);
 
         mItemÄndern.setText("ändern");
-        mItemÄndern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemÄndern.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemÄndernActionPerformed(evt);
             }
         });
@@ -66,9 +73,11 @@ public class AppointmentGUI extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                loadData(evt);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                saveData(evt);
             }
         });
 
@@ -124,13 +133,13 @@ public class AppointmentGUI extends javax.swing.JFrame
         
     }//GEN-LAST:event_mItemÄndernActionPerformed
 
-    private void loadData(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_loadData
+    private void saveData(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_saveData
         try {
             model.save();
         } catch (Exception ex) {
             Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_loadData
+    }//GEN-LAST:event_saveData
 
 
     public static void main(String args[])

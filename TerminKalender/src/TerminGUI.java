@@ -92,12 +92,12 @@ public class TerminGUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void mItemHinzufügenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemHinzufügenActionPerformed
-         JFrame frame= new JFrame();
+        JFrame frame= new JFrame();
         AppointmentDlg dialog=new AppointmentDlg(frame, true);//true-----> modal!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      dialog.setVisible(true);
+        dialog.setVisible(true);
     //  Event e=null;
-       if(dialog.isOK()){
-    //      e=dialog.getBack();
+        if(dialog.isOK()){
+            
            
        }
     }//GEN-LAST:event_mItemHinzufügenActionPerformed

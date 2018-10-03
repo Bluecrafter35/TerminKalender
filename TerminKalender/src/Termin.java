@@ -45,7 +45,6 @@ public class Termin implements Serializable
         this.text = text;
     }
     
-    
     @Override
     public String toString()
     {

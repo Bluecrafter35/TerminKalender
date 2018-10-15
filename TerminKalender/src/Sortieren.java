@@ -11,11 +11,11 @@ import java.util.Comparator;
  *
  * @author Christoph Mautner
  */
-public class Sortieren implements Comparator<Termin>
+public class Sortieren implements Comparator<Appointment>
 {
 
     @Override
-    public int compare(Termin t, Termin t1)
+    public int compare(Appointment t, Appointment t1)
     {
         if(t.getDatum().isBefore(t1.getDatum()))
         {

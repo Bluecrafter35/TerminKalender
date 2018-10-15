@@ -2,22 +2,32 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-public class TerminGUI extends javax.swing.JFrame
+
+public class AppointmentGUI extends javax.swing.JFrame
 {
 
-    TerminBL model = new TerminBL();
+    AppointmentBL model = new AppointmentBL();
 
-    public TerminGUI()
+    public AppointmentGUI()
     {
+
         initComponents();
 
         list.setModel(model);
+        
+        try {
+            model.load();
+        } catch (Exception ex) {
+            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
@@ -31,24 +41,30 @@ public class TerminGUI extends javax.swing.JFrame
         jMenu1.setText("Termin");
 
         mItemHinzufügen.setText("hinzufügen");
-        mItemHinzufügen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemHinzufügen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemHinzufügenActionPerformed(evt);
             }
         });
         jMenu1.add(mItemHinzufügen);
 
         mItemLöschen.setText("löschen");
-        mItemLöschen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemLöschen.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemLöschenActionPerformed(evt);
             }
         });
         jMenu1.add(mItemLöschen);
 
         mItemÄndern.setText("ändern");
-        mItemÄndern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        mItemÄndern.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 mItemÄndernActionPerformed(evt);
             }
         });
@@ -58,6 +74,13 @@ public class TerminGUI extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termin-Kalender");
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                saveData(evt);
+            }
+        });
 
         list.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         list.setComponentPopupMenu(jPopupMenu1);
@@ -95,7 +118,7 @@ public class TerminGUI extends javax.swing.JFrame
         JFrame frame = new JFrame();
         AppointmentDlg dialog = new AppointmentDlg(frame, true);
         dialog.setVisible(true);
-        Termin t = null;
+        Appointment t = null;
         if (dialog.isOK()) {
             t = dialog.getTermin();
             model.add(t);
@@ -103,21 +126,49 @@ public class TerminGUI extends javax.swing.JFrame
     }//GEN-LAST:event_mItemHinzufügenActionPerformed
 
     private void mItemLöschenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemLöschenActionPerformed
-        model.delete(list.getSelectedIndex());
+        if(this.list.getSelectedIndices().length==1)
+        {
+            model.delete(list.getSelectedIndex());
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Bitte einen Termin aus der Liste auswählen");
+        }
     }//GEN-LAST:event_mItemLöschenActionPerformed
 
     private void mItemÄndernActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mItemÄndernActionPerformed
+        AppointmentDlg dialog = new AppointmentDlg(new JFrame(), true);
+        if(this.list.getSelectedIndices().length==1)
+        {
+            int idx = this.list.getSelectedIndex();
+            Appointment appoint = model.getElementAt(idx);
+            dialog.changeAppointment(appoint);
+            dialog.setVisible(true);
+            if(dialog.isOK())
+            {
+                appoint = dialog.getTermin();
+                model.change(appoint, idx);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Bitte einen Termin aus der Liste auswählen");
+        }
+        
+    }//GEN-LAST:event_mItemÄndernActionPerformed
 
+    private void saveData(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_saveData
         try {
             model.save();
-            model.load();
         } catch (Exception ex) {
-            Logger.getLogger(TerminGUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AppointmentGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_mItemÄndernActionPerformed
+    }//GEN-LAST:event_saveData
+
 
     public static void main(String args[])
     {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -131,22 +182,21 @@ public class TerminGUI extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TerminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppointmentGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
-                new TerminGUI().setVisible(true);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new AppointmentGUI().setVisible(true);
             }
         });
     }
@@ -156,7 +206,7 @@ public class TerminGUI extends javax.swing.JFrame
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<Termin> list;
+    private javax.swing.JList<Appointment> list;
     private javax.swing.JMenuItem mItemHinzufügen;
     private javax.swing.JMenuItem mItemLöschen;
     private javax.swing.JMenuItem mItemÄndern;
